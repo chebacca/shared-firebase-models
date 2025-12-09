@@ -1,0 +1,16 @@
+{
+  "name": "shared-firebase-models",
+  "version": "1.0.0",
+  "description": "Shared Firebase data models for unified architecture",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "dev": "npm run build:watch"
+  },
+  "devDependencies": {
+    "typescript": "^4.9.0",
+    "@types/node": "^18.0.0"
+  }
+}
