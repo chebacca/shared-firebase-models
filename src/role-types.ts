@@ -41,7 +41,31 @@ export enum DashboardRole {
   
   // Support
   PRODUCTION_ASSISTANT = 'PRODUCTION_ASSISTANT',
-  VIEWER = 'VIEWER'
+  VIEWER = 'VIEWER',
+  
+  // NEW: Audio Roles
+  AUDIO_POST = 'AUDIO_POST',
+  AUDIO_PRODUCTION = 'AUDIO_PRODUCTION',
+  AUDIO_MIXER = 'AUDIO_MIXER',
+  SOUND_ENGINEER = 'SOUND_ENGINEER',
+  
+  // NEW: Visual Roles
+  COLORIST = 'COLORIST',
+  GFX_ARTIST = 'GFX_ARTIST',
+  CAMERA_OPERATOR = 'CAMERA_OPERATOR',
+  
+  // NEW: Technical Roles
+  QC_SPECIALIST = 'QC_SPECIALIST',
+  DIT = 'DIT',
+  
+  // NEW: Coordination Roles
+  LOCATION_MANAGER = 'LOCATION_MANAGER',
+  PRODUCTION_MANAGER = 'PRODUCTION_MANAGER',
+  POST_SUPERVISOR = 'POST_SUPERVISOR',
+  
+  // NEW: Support Roles
+  POST_PA = 'POST_PA',
+  GUEST = 'GUEST'
 }
 
 // Tier 2: Clip Show Pro Roles (Functional)

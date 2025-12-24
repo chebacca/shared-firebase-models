@@ -2,6 +2,7 @@
  * 🔥 UNIFIED USER DATA MODEL
  * Single source of truth for user data across all applications
  */
+export { LicensingRole, DashboardRole, ClipShowProRole, CallSheetRole, CuesheetRole } from './role-types';
 export type UserRole = 'SUPERADMIN' | 'ADMIN' | 'TEAM_MEMBER' | 'USER' | 'ACCOUNTING' | 'ENTERPRISE_ADMIN' | 'OWNER';
 export interface RoleMapping {
     licensingRole: string;

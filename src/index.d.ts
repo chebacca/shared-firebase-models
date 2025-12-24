@@ -2,6 +2,7 @@
  * 🔥 UNIFIED USER DATA MODEL
  * Single source of truth for user data across all applications
  */
+export { LicensingRole, DashboardRole, ClipShowProRole, CallSheetRole, CuesheetRole } from './role-types';
 export type UserRole = 'SUPERADMIN' | 'ADMIN' | 'TEAM_MEMBER' | 'USER' | 'ACCOUNTING' | 'ENTERPRISE_ADMIN' | 'OWNER';
 export interface RoleMapping {
     licensingRole: string;
@@ -33,6 +34,12 @@ export interface UnifiedUser {
     effectiveHierarchy?: number;
     roleMapping?: RoleMapping;
     projectAssignments?: Record<string, ProjectAssignment>;
+    subscriptionAddOns?: {
+        clipShowPro?: boolean;
+        callSheetPro?: boolean;
+        edlConverter?: boolean;
+    };
+    appRoles?: Record<string, string>;
     isEDLConverter?: boolean;
     isCallSheetUser?: boolean;
     isStandaloneUser?: boolean;
@@ -126,6 +133,7 @@ export interface TeamMember {
     updatedAt: Date;
     permissions?: string[];
     projectAssignments?: Record<string, ProjectAssignment>;
+    appRoles?: Record<string, string>;
 }
 /**
  * 🔥 UNIFIED LICENSE MODEL
@@ -161,5 +169,22 @@ export interface Subscription {
     createdAt: Date;
     updatedAt: Date;
     metadata?: Record<string, any>;
+    addOns?: {
+        clipShowPro?: {
+            active: boolean;
+            activatedAt: Date;
+            expiresAt?: Date;
+        };
+        callSheetPro?: {
+            active: boolean;
+            activatedAt: Date;
+            expiresAt?: Date;
+        };
+        edlConverter?: {
+            active: boolean;
+            activatedAt: Date;
+            expiresAt?: Date;
+        };
+    };
 }
 //# sourceMappingURL=index.d.ts.map

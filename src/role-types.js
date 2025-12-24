@@ -1,21 +1,24 @@
+"use strict";
 /**
  * 🔥 UNIFIED ROLE TYPE DEFINITIONS
  * Two-tier role system:
  * - Tier 1: Licensing Website Roles (Organizational) - OWNER, ADMIN, MEMBER, ACCOUNTING
  * - Tier 2: App-Specific Roles (Functional) - licensing specialist, editor, producer, writer, etc.
  */
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.CuesheetRole = exports.CallSheetRole = exports.ClipShowProRole = exports.DashboardRole = exports.LicensingRole = void 0;
 // Tier 1: Licensing Website Roles (Organizational)
 // These roles control access to the licensing website and organization account management
-export var LicensingRole;
+var LicensingRole;
 (function (LicensingRole) {
     LicensingRole["OWNER"] = "OWNER";
     LicensingRole["ADMIN"] = "ADMIN";
     LicensingRole["MEMBER"] = "MEMBER";
     LicensingRole["ACCOUNTING"] = "ACCOUNTING"; // Financial data access only
-})(LicensingRole || (LicensingRole = {}));
+})(LicensingRole || (exports.LicensingRole = LicensingRole = {}));
 // Tier 2: Dashboard App Roles (Functional)
 // These roles determine what users can do within the Dashboard application
-export var DashboardRole;
+var DashboardRole;
 (function (DashboardRole) {
     // Administrative
     DashboardRole["ADMIN"] = "ADMIN";
@@ -57,10 +60,10 @@ export var DashboardRole;
     // NEW: Support Roles
     DashboardRole["POST_PA"] = "POST_PA";
     DashboardRole["GUEST"] = "GUEST";
-})(DashboardRole || (DashboardRole = {}));
+})(DashboardRole || (exports.DashboardRole = DashboardRole = {}));
 // Tier 2: Clip Show Pro Roles (Functional)
 // These roles determine what users can do within Clip Show Pro
-export var ClipShowProRole;
+var ClipShowProRole;
 (function (ClipShowProRole) {
     ClipShowProRole["PRODUCER"] = "PRODUCER";
     ClipShowProRole["SUPERVISING_PRODUCER"] = "SUPERVISING_PRODUCER";
@@ -78,20 +81,20 @@ export var ClipShowProRole;
     ClipShowProRole["LINE_PRODUCER"] = "LINE_PRODUCER";
     ClipShowProRole["PRODUCTION_ASSISTANT"] = "PRODUCTION_ASSISTANT";
     ClipShowProRole["MEDIA_MANAGER"] = "MEDIA_MANAGER";
-})(ClipShowProRole || (ClipShowProRole = {}));
+})(ClipShowProRole || (exports.ClipShowProRole = ClipShowProRole = {}));
 // Tier 2: Call Sheet Roles (Functional)
 // These roles determine what users can do within the Call Sheet application
-export var CallSheetRole;
+var CallSheetRole;
 (function (CallSheetRole) {
     CallSheetRole["ADMIN"] = "ADMIN";
     CallSheetRole["PRODUCER"] = "PRODUCER";
     CallSheetRole["COORDINATOR"] = "COORDINATOR";
     CallSheetRole["MEMBER"] = "MEMBER";
-})(CallSheetRole || (CallSheetRole = {}));
+})(CallSheetRole || (exports.CallSheetRole = CallSheetRole = {}));
 // Tier 2: Cuesheet Roles (Functional)
 // These roles determine what users can do within the Cuesheet application
 // Uses same role structure as Clip Show Pro
-export var CuesheetRole;
+var CuesheetRole;
 (function (CuesheetRole) {
     CuesheetRole["PRODUCER"] = "PRODUCER";
     CuesheetRole["SUPERVISING_PRODUCER"] = "SUPERVISING_PRODUCER";
@@ -111,4 +114,5 @@ export var CuesheetRole;
     CuesheetRole["MEDIA_MANAGER"] = "MEDIA_MANAGER";
     CuesheetRole["ADMIN"] = "ADMIN";
     CuesheetRole["VIEWER"] = "VIEWER";
-})(CuesheetRole || (CuesheetRole = {}));
+})(CuesheetRole || (exports.CuesheetRole = CuesheetRole = {}));
+//# sourceMappingURL=role-types.js.map
