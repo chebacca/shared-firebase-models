@@ -8,7 +8,7 @@
  * Organization Custom: organizationId = string, isSystemDefault = false
  */
 
-export type AppName = 'dashboard' | 'clipShowPro' | 'callSheet' | 'cuesheet';
+export type AppName = 'dashboard' | 'clipShowPro' | 'callSheet' | 'cuesheet' | 'addressBook' | 'bridge' | 'cns' | 'iwm' | 'licensing' | 'mobileCompanion' | 'workflow' | 'timecard';
 
 export interface AppRoleDefinition {
   id: string;
@@ -42,14 +42,14 @@ export function isSystemDefaultRoleValue(roleValue: string, appName: AppName): b
 export function validateAppRoleValue(roleValue: string): { valid: boolean; error?: string } {
   // Must be uppercase with underscores
   const pattern = /^[A-Z][A-Z0-9_]*$/;
-  
+
   if (!pattern.test(roleValue)) {
     return {
       valid: false,
       error: 'Role value must be uppercase with underscores only (e.g., VFX_SUPERVISOR)'
     };
   }
-  
+
   // Must be at least 2 characters
   if (roleValue.length < 2) {
     return {
@@ -57,7 +57,7 @@ export function validateAppRoleValue(roleValue: string): { valid: boolean; error
       error: 'Role value must be at least 2 characters'
     };
   }
-  
+
   // Must be no more than 50 characters
   if (roleValue.length > 50) {
     return {
@@ -65,7 +65,7 @@ export function validateAppRoleValue(roleValue: string): { valid: boolean; error
       error: 'Role value must be no more than 50 characters'
     };
   }
-  
+
   return { valid: true };
 }
 

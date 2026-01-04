@@ -80,6 +80,7 @@ export interface Organization {
         features: string[];
     };
 }
+export type ProjectScope = 'GLOBAL' | 'APP_SPECIFIC';
 /**
  * 🔥 UNIFIED PROJECT MODEL
  */
@@ -116,6 +117,8 @@ export interface Project {
     lastActivityAt: string;
     realTimeEnabled: boolean;
     lastAccessedAt: string;
+    scope: ProjectScope;
+    appId?: string;
 }
 /**
  * 🔥 UNIFIED TEAM MEMBER MODEL

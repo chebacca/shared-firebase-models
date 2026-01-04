@@ -7,7 +7,7 @@
  * System Defaults: organizationId = null, isSystemDefault = true
  * Organization Custom: organizationId = string, isSystemDefault = false
  */
-export type AppName = 'dashboard' | 'clipShowPro' | 'callSheet' | 'cuesheet';
+export type AppName = 'dashboard' | 'clipShowPro' | 'callSheet' | 'cuesheet' | 'addressBook' | 'bridge' | 'cns' | 'iwm' | 'licensing' | 'mobileCompanion' | 'workflow' | 'timecard';
 export interface AppRoleDefinition {
     id: string;
     organizationId: string | null;

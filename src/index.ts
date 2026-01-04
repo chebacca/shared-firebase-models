@@ -102,6 +102,8 @@ export interface Organization {
   };
 }
 
+export type ProjectScope = 'GLOBAL' | 'APP_SPECIFIC';
+
 /**
  * 🔥 UNIFIED PROJECT MODEL
  */
@@ -138,6 +140,10 @@ export interface Project {
   lastActivityAt: string;
   realTimeEnabled: boolean;
   lastAccessedAt: string;
+
+  // New Scoping Fields
+  scope: ProjectScope;
+  appId?: string; // Required if scope is APP_SPECIFIC
 }
 
 /**
