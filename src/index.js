@@ -12,4 +12,3 @@ Object.defineProperty(exports, "DashboardRole", { enumerable: true, get: functio
 Object.defineProperty(exports, "ClipShowProRole", { enumerable: true, get: function () { return role_types_1.ClipShowProRole; } });
 Object.defineProperty(exports, "CallSheetRole", { enumerable: true, get: function () { return role_types_1.CallSheetRole; } });
 Object.defineProperty(exports, "CuesheetRole", { enumerable: true, get: function () { return role_types_1.CuesheetRole; } });
-//# sourceMappingURL=index.js.map

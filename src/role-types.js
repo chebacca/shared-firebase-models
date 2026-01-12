@@ -115,4 +115,3 @@ var CuesheetRole;
     CuesheetRole["ADMIN"] = "ADMIN";
     CuesheetRole["VIEWER"] = "VIEWER";
 })(CuesheetRole || (exports.CuesheetRole = CuesheetRole = {}));
-//# sourceMappingURL=role-types.js.map
