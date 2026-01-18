@@ -8,7 +8,23 @@
  * Organization Custom: organizationId = string, isSystemDefault = false
  */
 
-export type AppName = 'dashboard' | 'clipShowPro' | 'callSheet' | 'cuesheet' | 'addressBook' | 'bridge' | 'cns' | 'iwm' | 'licensing' | 'mobileCompanion' | 'workflow' | 'timecard';
+export type AppName = 
+  | 'hub'           // Backbone Hub
+  | 'pws'           // Production Workflow System (dashboard)
+  | 'dashboard'     // Legacy alias for pws
+  | 'clipShowPro'   // Clip Show Pro
+  | 'callSheet'     // Call Sheet Pro
+  | 'cuesheet'      // Cuesheet & Budget Tools
+  | 'iwm'           // Inventory & Warehouse Management
+  | 'timecard'      // Timecard Management
+  | 'securityDesk'  // Security Desk
+  | 'addressBook'   // Address Book
+  | 'deliverables'  // Deliverables
+  | 'cns'           // CNS / Parser Brain
+  | 'bridge'        // Bridge
+  | 'licensing'     // Licensing Website
+  | 'mobileCompanion' // Mobile Companion
+  | 'workflow';     // Legacy alias for pws
 
 export interface AppRoleDefinition {
   id: string;
