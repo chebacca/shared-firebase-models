@@ -22,12 +22,12 @@
   "devDependencies": {
     "@types/node": "^18.0.0",
     "@types/react": "^18.3.27",
-    "firebase": "catalog:default",
-    "react": "catalog:default",
-    "typescript": "catalog:default"
+    "firebase": "^12.7.0",
+    "react": "^18.2.0",
+    "typescript": "^5.3.3"
   },
   "peerDependencies": {
-    "firebase": "catalog:default",
-    "react": "catalog:default"
+    "firebase": "^12.7.0",
+    "react": "^18.2.0"
   }
 }
