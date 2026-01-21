@@ -5,9 +5,9 @@
  * - Tier 2: App-Specific Roles (Functional) - licensing specialist, editor, producer, writer, etc.
  */
 export declare enum LicensingRole {
-    OWNER = "OWNER",
-    ADMIN = "ADMIN",
-    MEMBER = "MEMBER",
+    OWNER = "OWNER",// Organization owner, full access
+    ADMIN = "ADMIN",// Organization admin, management access
+    MEMBER = "MEMBER",// Regular organization member
     ACCOUNTING = "ACCOUNTING"
 }
 export declare enum DashboardRole {
