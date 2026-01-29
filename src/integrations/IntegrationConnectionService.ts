@@ -5,10 +5,10 @@
  * All apps use this service to check connection status
  */
 
-import { 
-  Firestore, 
-  doc, 
-  getDoc, 
+import {
+  Firestore,
+  doc,
+  getDoc,
   getDocFromServer,
   onSnapshot,
   Unsubscribe
@@ -46,14 +46,14 @@ export class IntegrationConnectionService {
     provider: 'google' | 'box' | 'dropbox' | 'slack' | string
   ): Promise<ConnectionStatus> {
     const ref = doc(db, 'organizations', organizationId, 'cloudIntegrations', provider);
-    
+
     // Try server fetch first, fallback to cache
     const snapshot = await getDocFromServer(ref).catch(() => getDoc(ref));
-    
+
     if (!snapshot.exists()) {
       return { connected: false, provider };
     }
-    
+
     const data = snapshot.data();
     return {
       connected: data.isActive !== false && !!data.accessToken,
@@ -65,7 +65,7 @@ export class IntegrationConnectionService {
       scopes: data.scopes
     };
   }
-  
+
   /**
    * Subscribe to connection changes
    * Real-time updates when connection status changes
@@ -78,7 +78,7 @@ export class IntegrationConnectionService {
     callback: (status: ConnectionStatus) => void
   ): Unsubscribe {
     const ref = doc(db, 'organizations', organizationId, 'cloudIntegrations', provider);
-    
+
     return onSnapshot(ref, (snapshot) => {
       if (snapshot.exists()) {
         const data = snapshot.data();
@@ -96,7 +96,7 @@ export class IntegrationConnectionService {
       }
     });
   }
-  
+
   /**
    * Redirect to Licensing Website for OAuth
    * Used by ALL apps except Licensing Website
@@ -106,18 +106,39 @@ export class IntegrationConnectionService {
     returnUrl: string
   ): void {
     const isDev = window.location.hostname === 'localhost';
-    const licensingUrl = isDev 
+    const licensingUrl = isDev
       ? 'http://localhost:4001'
       : 'https://backbone-logic.web.app';
-    
+
     const params = new URLSearchParams({
       provider,
       returnUrl: encodeURIComponent(returnUrl)
     });
-    
-    window.location.href = `${licensingUrl}/integrations?${params}`;
+
+    // 🔧 FIX: If the returnUrl is a Hub URL (contains #/appId), extract appId and add as hubAppId 
+    // This allows Licensing Website's OAuthFlowManager to correctly route back to the Hub
+    if (returnUrl.includes('#/')) {
+      const hashParts = returnUrl.split('#/');
+      if (hashParts.length > 1) {
+        const hubAppId = hashParts[1].split('?')[0]; // Get appId before any query params
+        if (hubAppId) {
+          params.append('hubAppId', hubAppId);
+          console.log(`✅ [IntegrationConnectionService] Propagating hubAppId: ${hubAppId}`);
+        }
+      }
+    }
+
+    const targetUrl = `${licensingUrl}/dashboard/integrations?${params}`;
+
+    // Safety: don't redirect if we're already at the target
+    if (window.location.href === targetUrl) {
+      console.warn('[IntegrationConnectionService] Already at target OAuth flow URL');
+      return;
+    }
+
+    window.location.href = targetUrl;
   }
-  
+
   /**
    * Get all connection statuses for an organization
    */
@@ -127,13 +148,13 @@ export class IntegrationConnectionService {
   ): Promise<Record<string, ConnectionStatus>> {
     const providers = ['google', 'box', 'dropbox', 'slack'];
     const statuses: Record<string, ConnectionStatus> = {};
-    
+
     await Promise.all(
       providers.map(async (provider) => {
         statuses[provider] = await this.getConnectionStatus(db, organizationId, provider);
       })
     );
-    
+
     return statuses;
   }
 }
